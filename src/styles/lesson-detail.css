@@ -1,0 +1,141 @@
+/* ─── Detail Shell ─── */
+.detail-shell {
+    animation: none;
+    opacity: 1;
+}
+
+/* ─── Back Link ─── */
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 6px 2px;
+    margin-bottom: 18px;
+    transition: color 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.back-link:hover {
+    color: var(--text-primary);
+}
+
+.back-link:focus-visible {
+    outline: 2px solid var(--cool-2);
+    outline-offset: 3px;
+    border-radius: 6px;
+}
+
+.back-arrow {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* ─── Detail Header ─── */
+.detail-header {
+    padding: 4px 2px 26px;
+    text-align: left;
+}
+
+.detail-icon {
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    margin-bottom: 16px;
+}
+
+.detail-icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.detail-title {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
+}
+
+.detail-intro {
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 46ch;
+}
+
+/* ─── Image Slot (placeholder for illustrations) ─── */
+.image-slot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+    border: 1.5px dashed var(--border-hover);
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-secondary);
+    margin: 4px 0 28px;
+}
+
+.image-slot-icon {
+    width: 26px;
+    height: 26px;
+    opacity: 0.7;
+}
+
+.image-slot-label {
+    font-size: 12px;
+    font-weight: 400;
+    text-align: center;
+    padding: 0 16px;
+}
+
+/* ─── Content Sections ─── */
+.detail-sections {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-section {
+    margin-bottom: 8px;
+}
+
+.detail-section:last-child .image-slot {
+    margin-bottom: 4px;
+}
+
+.detail-section-title {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    letter-spacing: -0.005em;
+}
+
+.detail-section-body {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--text-primary);
+    opacity: 0.88;
+    margin: 0 0 16px;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+    .back-link {
+        transition: none;
+    }
+}

@@ -25,6 +25,22 @@ export function arrowIcon() {
         </svg>`;
 }
 
+export function backArrowIcon() {
+    return `
+        <svg class="back-arrow" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+}
+
+export function imagePlaceholderIcon() {
+    return `
+        <svg class="image-slot-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="4" width="18" height="16" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <circle cx="8.5" cy="9.5" r="1.6" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M3.5 16.5l5.5-5 4 3.5 3-2.7 4.5 4.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+}
+
 function warmCool(uid) {
     return `
         <svg viewBox="0 0 48 48">
