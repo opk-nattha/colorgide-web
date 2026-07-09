@@ -1,7 +1,30 @@
+:root {
+    --bg: #252525;
+    --surface: #2c2c2e;
+    --surface-hover: #363638;
+    --surface-active: #3d3d40;
+    --border: rgba(255, 255, 255, 0.07);
+    --border-hover: rgba(255, 255, 255, 0.14);
+    --text-primary: #ffffff;
+    --text-secondary: #a2a2a5;
+    --warm-1: #ff430f;
+    --warm-2: #ffb616;
+    --warm-3: #ffe01e;
+    --cool-1: #097aff;
+    --cool-2: #4fc3ff;
+    --radius-lg: 22px;
+    --radius-sm: 14px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    background-color: #252525;
-    color: #ffffff;
+    background-color: var(--bg);
+    color: var(--text-primary);
     margin: 0;
+    font-family: 'Prompt', sans-serif;
 }
 
 /* ─── Splash Screen ─── */
@@ -25,4 +48,194 @@ body {
 @keyframes splashHide {
   0%, 85% { opacity: 1; visibility: visible; }
   100%    { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* ─── App Shell ─── */
+.app-shell {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 28px 20px 48px;
+    opacity: 0;
+    animation: shellReveal 0.7s ease-out 1.7s forwards;
+}
+
+@keyframes shellReveal {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Header ─── */
+.app-header {
+    position: relative;
+    padding: 8px 4px 28px;
+}
+
+.app-header::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -20%;
+    width: 140%;
+    height: 200px;
+    background:
+        radial-gradient(closest-side, rgba(255, 67, 15, 0.16), transparent 70%) 15% 30% / 55% 100% no-repeat,
+        radial-gradient(closest-side, rgba(9, 122, 255, 0.16), transparent 70%) 85% 20% / 55% 100% no-repeat;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.brand-mark {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.brand-name {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+}
+
+.page-subtitle {
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 34ch;
+}
+
+/* ─── Lesson Grid ─── */
+.lesson-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+@media (min-width: 620px) {
+    .lesson-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* ─── Lesson Card ─── */
+.lesson-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.lesson-card:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+}
+
+.lesson-card:active {
+    background: var(--surface-active);
+    transform: scale(0.985);
+}
+
+.lesson-card:focus-visible {
+    outline: 2px solid var(--cool-2);
+    outline-offset: 2px;
+}
+
+.lesson-swatch {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.lesson-swatch svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.25s ease;
+}
+
+.lesson-card:hover .lesson-swatch svg {
+    transform: scale(1.08);
+}
+
+.lesson-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+}
+
+.lesson-title {
+    font-size: 15.5px;
+    font-weight: 500;
+    line-height: 1.3;
+}
+
+.lesson-desc {
+    font-size: 12.5px;
+    font-weight: 300;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
+.lesson-arrow {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+    transition: transform 0.18s ease, color 0.18s ease;
+}
+
+.lesson-card:hover .lesson-arrow {
+    transform: translateX(3px);
+    color: var(--text-primary);
+}
+
+/* ─── Mixing swatch blend ─── */
+.swatch-mixing .mix-a,
+.swatch-mixing .mix-b {
+    mix-blend-mode: screen;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+    .app-shell {
+        animation: none;
+        opacity: 1;
+    }
+    .lesson-card,
+    .lesson-swatch svg,
+    .lesson-arrow {
+        transition: none;
+    }
 }
