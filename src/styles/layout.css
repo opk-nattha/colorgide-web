@@ -1,0 +1,78 @@
+/* ─── App Shell ─── */
+.app-shell {
+    max-width: 560px;
+    margin: 0 auto;
+    padding: 28px 20px 48px;
+    opacity: 0;
+    animation: shellReveal 0.7s ease-out 1.7s forwards;
+}
+
+@keyframes shellReveal {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Header ─── */
+.app-header {
+    position: relative;
+    padding: 8px 4px 28px;
+}
+
+.app-header::before {
+    content: "";
+    position: absolute;
+    top: -60px;
+    left: -20%;
+    width: 140%;
+    height: 200px;
+    background:
+        radial-gradient(closest-side, rgba(255, 67, 15, 0.16), transparent 70%) 15% 30% / 55% 100% no-repeat,
+        radial-gradient(closest-side, rgba(9, 122, 255, 0.16), transparent 70%) 85% 20% / 55% 100% no-repeat;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+
+.brand-mark {
+    width: 26px;
+    height: 26px;
+    flex-shrink: 0;
+}
+
+.brand-name {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin: 0 0 8px;
+    letter-spacing: -0.01em;
+}
+
+.page-subtitle {
+    font-size: 14.5px;
+    font-weight: 300;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    max-width: 34ch;
+}
+
+/* ─── Reduced motion ─── */
+@media (prefers-reduced-motion: reduce) {
+    .app-shell {
+        animation: none;
+        opacity: 1;
+    }
+}
