@@ -25,7 +25,7 @@ export function renderLessonSelect() {
                     <span class="brand-name">Color Gide</span>
                 </div>
                 <h1 class="page-title">เลือกบทเรียนที่อยากเริ่ม</h1>
-                <p class="page-subtitle">แตะการ์ดด้านล่าง แล้วเริ่มทำความเข้าใจเรื่องสีทีละขั้น</p>
+                <p class="page-subtitle">แตะหัวข้อบทเรียนที่ต้องการด้านล่าง แล้วเริ่มทำความเข้าใจเรื่องสีทีละขั้น</p>
             </header>
 
             <section class="lesson-grid" aria-label="รายการบทเรียน">
