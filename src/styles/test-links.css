@@ -1,0 +1,117 @@
+/* ─── Test Links ─── */
+.test-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 4px 0 22px;
+}
+
+.test-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a.test-link:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-hover);
+}
+
+.test-link.is-done {
+    border-color: rgba(9, 122, 255, 0.35);
+}
+
+.test-link.is-locked {
+    opacity: 0.55;
+    cursor: not-allowed;
+}
+
+.test-link-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--cool-2);
+}
+
+.test-link.is-done .test-link-icon {
+    color: var(--warm-2);
+}
+
+.test-link.is-locked .test-link-icon {
+    color: var(--text-secondary);
+}
+
+.external-icon,
+.lock-icon,
+.check-icon {
+    width: 17px;
+    height: 17px;
+}
+
+.test-link-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.test-link-title {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.test-link-sub {
+    font-size: 12px;
+    font-weight: 300;
+    color: var(--text-secondary);
+}
+
+.test-link.pulse {
+    animation: testLinkPulse 0.9s ease;
+}
+
+@keyframes testLinkPulse {
+    0%, 100% { border-color: var(--border); }
+    30% { border-color: var(--cool-2); transform: scale(1.015); }
+}
+
+/* ─── Locked hint + locked lesson cards ─── */
+.lock-hint {
+    font-size: 12.5px;
+    font-weight: 300;
+    color: var(--text-secondary);
+    margin: 0 0 14px;
+}
+
+.lesson-card.is-locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.lesson-card.is-locked .lock-icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    color: var(--text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .test-link {
+        transition: none;
+    }
+    .test-link.pulse {
+        animation: none;
+    }
+}

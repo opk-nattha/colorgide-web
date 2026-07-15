@@ -4,7 +4,14 @@
     margin: 0 auto;
     padding: 28px 20px 48px;
     opacity: 0;
-    animation: shellReveal 0.7s ease-out 1.7s forwards;
+}
+
+/* body.is-ready is added by main.js once the splash has finished, so the
+   very first shell fade-in lines up with the splash — but re-renders
+   after that (e.g. clicking the pre-test link) fade in immediately
+   instead of replaying that wait. */
+body.is-ready .app-shell {
+    animation: shellReveal 0.7s ease-out forwards;
 }
 
 @keyframes shellReveal {
@@ -72,7 +79,9 @@
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
     .app-shell {
-        animation: none;
         opacity: 1;
+    }
+    body.is-ready .app-shell {
+        animation: none;
     }
 }

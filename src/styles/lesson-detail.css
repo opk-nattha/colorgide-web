@@ -74,20 +74,40 @@
     max-width: 46ch;
 }
 
-/* ─── Image Slot (placeholder for illustrations) ─── */
+/* ─── Image Slot (placeholder + progressive media) ─── */
 .image-slot {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+    position: relative;
     aspect-ratio: 16 / 9;
     width: 100%;
     border: 1.5px dashed var(--border-hover);
     border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.02);
-    color: var(--text-secondary);
+    overflow: hidden;
     margin: 4px 0 28px;
+}
+
+.slot-media {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.slot-placeholder {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    color: var(--text-secondary);
+    transition: opacity 0.35s ease;
 }
 
 .image-slot-icon {
@@ -101,6 +121,25 @@
     font-weight: 400;
     text-align: center;
     padding: 0 16px;
+}
+
+/* Once media has loaded, fade it in and hide the placeholder. */
+.image-slot.has-media {
+    border-style: solid;
+    border-color: var(--border);
+    background: #000;
+}
+
+.image-slot.has-media .slot-placeholder {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+}
+
+.image-slot.media-is-video .slot-video,
+.image-slot.media-is-image .slot-image {
+    opacity: 1;
 }
 
 /* ─── Content Sections ─── */
@@ -135,7 +174,9 @@
 
 /* ─── Reduced motion ─── */
 @media (prefers-reduced-motion: reduce) {
-    .back-link {
+    .back-link,
+    .slot-media,
+    .slot-placeholder {
         transition: none;
     }
 }

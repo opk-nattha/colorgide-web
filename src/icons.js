@@ -41,6 +41,28 @@ export function imagePlaceholderIcon() {
         </svg>`;
 }
 
+export function lockIcon() {
+    return `
+        <svg class="lock-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="5" y="11" width="14" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="1.7"/>
+            <path d="M8 11V8a4 4 0 0 1 8 0v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>`;
+}
+
+export function externalLinkIcon() {
+    return `
+        <svg class="external-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M14 5h5v5M19 5l-8 8M8 6H6a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+}
+
+export function checkIcon() {
+    return `
+        <svg class="check-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 13l4 4 10-10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+}
+
 function warmCool(uid) {
     return `
         <svg viewBox="0 0 48 48">

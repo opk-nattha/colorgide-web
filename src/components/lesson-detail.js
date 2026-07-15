@@ -1,4 +1,5 @@
 import { lessonContent } from '../data/lesson-content.js';
+import { mediaPaths } from '../data/media.js';
 import { lessonSwatch, backArrowIcon, imagePlaceholderIcon } from '../icons.js';
 
 function slugify(text) {
@@ -8,24 +9,34 @@ function slugify(text) {
         .replace(/^-+|-+$/g, '');
 }
 
-// A dashed placeholder box marking where an illustration goes.
-// `data-image-slot` gives each slot a stable, unique hook so a real
-// <img> can be dropped in later without touching the surrounding markup.
-function renderImageSlot(lessonId, label) {
-    const slotId = `${lessonId}__${slugify(label)}`;
+// Renders a media slot: a webm video + webp image + dashed placeholder,
+// all stacked on top of each other. src/media-loader.js decides which
+// one is actually visible once the page runs. `name` is the filename
+// (without extension) to look for — see src/data/media.js for the
+// folder convention.
+function renderMediaSlot(lessonId, name, label) {
+    const { webm, webp } = mediaPaths(lessonId, name);
+    const slotId = `${lessonId}__${slugify(name)}`;
+
     return `
-        <div class="image-slot" data-image-slot="${slotId}">
-            ${imagePlaceholderIcon()}
-            <span class="image-slot-label">ใส่รูปประกอบ: ${label}</span>
+        <div class="image-slot" data-media-slot="${slotId}">
+            <video class="slot-media slot-video" muted loop playsinline preload="none">
+                <source src="${webm}" type="video/webm">
+            </video>
+            <img class="slot-media slot-image" src="${webp}" alt="${label}" loading="lazy">
+            <div class="slot-placeholder">
+                ${imagePlaceholderIcon()}
+                <span class="image-slot-label">ใส่รูปประกอบ: ${label}</span>
+            </div>
         </div>`;
 }
 
-function renderSection(lessonId, section) {
+function renderSection(lessonId, section, index) {
     return `
         <section class="detail-section">
             <h2 class="detail-section-title">${section.heading}</h2>
             <p class="detail-section-body">${section.body}</p>
-            ${renderImageSlot(lessonId, section.heading)}
+            ${renderMediaSlot(lessonId, `section-${index + 1}`, section.heading)}
         </section>`;
 }
 
@@ -46,10 +57,10 @@ export function renderLessonDetail(lesson) {
                 <p class="detail-intro">${content.intro}</p>
             </header>
 
-            ${renderImageSlot(lesson.id, `ภาพหลัก - ${lesson.title}`)}
+            ${renderMediaSlot(lesson.id, 'hero', `ภาพหลัก - ${lesson.title}`)}
 
             <div class="detail-sections">
-                ${content.sections.map((section) => renderSection(lesson.id, section)).join('')}
+                ${content.sections.map((section, index) => renderSection(lesson.id, section, index)).join('')}
             </div>
         </main>`;
 }
