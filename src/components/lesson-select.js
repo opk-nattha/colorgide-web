@@ -1,5 +1,5 @@
 import { lessons } from '../data/lessons.js';
-import { brandMark, arrowIcon, lockIcon, lessonSwatch } from '../icons.js';
+import { arrowIcon, lockIcon, lessonSwatch } from '../icons.js';
 import { renderTestLinks } from './test-links.js';
 import { isLessonsUnlocked, markPreTestStarted } from '../state/progress.js';
 
@@ -36,7 +36,7 @@ export function renderLessonSelect() {
         <main class="app-shell">
             <header class="app-header">
                 <div class="brand">
-                    ${brandMark()}
+                    <img src="assets/icons/icon.svg" alt="" class="brand-mark" aria-hidden="true">
                     <span class="brand-name">Color Gide</span>
                 </div>
                 <h1 class="page-title">เลือกบทเรียนที่อยากเริ่ม</h1>
