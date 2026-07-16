@@ -77,7 +77,7 @@
 /* ─── Image Slot (placeholder + progressive media) ─── */
 .image-slot {
     position: relative;
-    aspect-ratio: 16 / 9;
+    aspect-ratio: 3 / 2;
     width: 100%;
     border: 1.5px dashed var(--border-hover);
     border-radius: var(--radius-lg);
@@ -127,7 +127,7 @@
 .image-slot.has-media {
     border-style: solid;
     border-color: var(--border);
-    background: #000;
+    background: var(--bg);
 }
 
 .image-slot.has-media .slot-placeholder {
