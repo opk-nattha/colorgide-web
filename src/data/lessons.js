@@ -3,6 +3,12 @@
 
 export const lessons = [
     {
+        id: 'equipment',
+        icon: 'equipment',
+        title: 'อุปกรณ์',
+        desc: 'สีน้ำ พู่กัน จานสี และทิชชู่ ที่ต้องมีก่อนเริ่มวาด',
+    },
+    {
         id: 'warm-cool',
         icon: 'warmCool',
         title: 'โทนร้อน โทนเย็น',
@@ -19,11 +25,5 @@ export const lessons = [
         icon: 'mixing',
         title: 'การผสมสี',
         desc: 'น้ำหนักของสี โทนสีที่เหมาะสมในการผสม',
-    },
-    {
-        id: 'vibrance',
-        icon: 'vibrance',
-        title: 'ทำไงให้สีสด',
-        desc: 'สีไม่หม่น แสงเงาที่ทำให้ภาพดูไม่หมอง',
     },
 ];

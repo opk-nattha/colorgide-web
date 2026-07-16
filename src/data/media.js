@@ -16,7 +16,7 @@ const folderByLesson = {
     'warm-cool': 'warm-tones-cool-tones',
     gradient: 'gradient',
     mixing: 'mix-colors',
-    vibrance: 'vibrant-colors',
+    equipment: 'equipment',
 };
 
 export function mediaPaths(lessonId, name) {

@@ -41,6 +41,15 @@ export function imagePlaceholderIcon() {
         </svg>`;
 }
 
+export function videoPlaceholderIcon() {
+    return `
+        <svg class="image-slot-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="14" height="14" rx="2.5" fill="none" stroke="currentColor" stroke-width="1.6"/>
+            <path d="M17 10.3l4-2.3v8l-4-2.3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M9 9.3l4.2 2.7-4.2 2.7z" fill="currentColor"/>
+        </svg>`;
+}
+
 export function lockIcon() {
     return `
         <svg class="lock-icon" viewBox="0 0 24 24" aria-hidden="true">
@@ -103,16 +112,24 @@ function mixing() {
         </svg>`;
 }
 
-function vibrance() {
+function equipment(uid) {
     return `
         <svg viewBox="0 0 48 48">
-            <circle cx="24" cy="24" r="21" fill="#6b6b6d"/>
-            <circle cx="24" cy="24" r="13.5" fill="#ff8a3d"/>
-            <circle cx="24" cy="24" r="6" fill="#ff430f"/>
+            <defs>
+                <linearGradient id="${uid}-handle" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ff430f"/>
+                    <stop offset="1" stop-color="#ffe01e"/>
+                </linearGradient>
+            </defs>
+            <ellipse cx="20" cy="27" rx="19" ry="13" fill="none" stroke="#6b6b6d" stroke-width="2.4"/>
+            <circle cx="13" cy="23" r="3" fill="#097aff"/>
+            <circle cx="21" cy="32" r="3" fill="#ff430f"/>
+            <circle cx="29" cy="22" r="3" fill="#ffe01e"/>
+            <rect x="30" y="4" width="5" height="18" rx="2.5" fill="url(#${uid}-handle)" transform="rotate(28 30 4)"/>
         </svg>`;
 }
 
-const swatchRenderers = { warmCool, gradient, mixing, vibrance };
+const swatchRenderers = { warmCool, gradient, mixing, equipment };
 
 export function lessonSwatch(iconKey, uid) {
     const render = swatchRenderers[iconKey];

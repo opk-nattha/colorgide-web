@@ -1,6 +1,6 @@
 import { lessonContent } from '../data/lesson-content.js';
 import { mediaPaths } from '../data/media.js';
-import { lessonSwatch, backArrowIcon, imagePlaceholderIcon } from '../icons.js';
+import { lessonSwatch, backArrowIcon, imagePlaceholderIcon, videoPlaceholderIcon } from '../icons.js';
 
 function slugify(text) {
     return text
@@ -13,10 +13,15 @@ function slugify(text) {
 // all stacked on top of each other. src/media-loader.js decides which
 // one is actually visible once the page runs. `name` is the filename
 // (without extension) to look for — see src/data/media.js for the
-// folder convention.
-function renderMediaSlot(lessonId, name, label) {
+// folder convention. `mediaKind: 'video'` just changes the placeholder
+// copy/icon to signal a video example is expected — the webp fallback
+// still works the same if a video never gets added.
+function renderMediaSlot(lessonId, name, label, mediaKind = 'image') {
     const { webm, webp } = mediaPaths(lessonId, name);
     const slotId = `${lessonId}__${slugify(name)}`;
+    const isVideo = mediaKind === 'video';
+    const placeholderIcon = isVideo ? videoPlaceholderIcon() : imagePlaceholderIcon();
+    const placeholderText = isVideo ? `ใส่วิดีโอตัวอย่าง: ${label}` : `ใส่รูปประกอบ: ${label}`;
 
     return `
         <div class="image-slot" data-media-slot="${slotId}">
@@ -25,8 +30,8 @@ function renderMediaSlot(lessonId, name, label) {
             </video>
             <img class="slot-media slot-image" src="${webp}" alt="${label}" loading="lazy">
             <div class="slot-placeholder">
-                ${imagePlaceholderIcon()}
-                <span class="image-slot-label">ใส่รูปประกอบ: ${label}</span>
+                ${placeholderIcon}
+                <span class="image-slot-label">${placeholderText}</span>
             </div>
         </div>`;
 }
@@ -36,7 +41,7 @@ function renderSection(lessonId, section, index) {
         <section class="detail-section">
             <h2 class="detail-section-title">${section.heading}</h2>
             <p class="detail-section-body">${section.body}</p>
-            ${renderMediaSlot(lessonId, `section-${index + 1}`, section.heading)}
+            ${renderMediaSlot(lessonId, `section-${index + 1}`, section.heading, section.mediaKind)}
         </section>`;
 }
 

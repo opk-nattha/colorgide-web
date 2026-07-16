@@ -30,6 +30,9 @@ function bindMediaSlot(slot) {
         } else {
             video.addEventListener('loadeddata', activateVideo, { once: true });
             video.addEventListener('error', () => {}, { once: true });
+            // preload="none" means nothing fetches on its own — .load() kicks
+            // off the actual resource selection so loadeddata can ever fire.
+            video.load();
         }
     }
 
