@@ -50,6 +50,16 @@ export function renderLessonSelect() {
             <section class="lesson-grid" aria-label="รายการบทเรียน">
                 ${lessons.map((lesson) => renderCard(lesson, unlocked)).join('')}
             </section>
+
+            <footer class="credits-footer">
+                <p class="credits-title">Color Gide จัดทำโดย</p>
+                <ol class="credits-list">
+                    <li>เดี๋ยวเราใส่เอง ชั้น ___ เลขที่ ___ หน้าที่ ___</li>
+                    <li>เดี๋ยวเราใส่เอง ชั้น ___ เลขที่ ___ หน้าที่ ___</li>
+                    <li>เดี๋ยวเราใส่เอง ชั้น ___ เลขที่ ___ หน้าที่ ___</li>
+                </ol>
+                <p class="credits-teacher">เสนอครู เดี๋ยวเราใส่เอง</p>
+            </footer>
         </main>`;
 }
 

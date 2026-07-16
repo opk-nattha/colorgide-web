@@ -85,3 +85,28 @@ body.is-ready .app-shell {
         animation: none;
     }
 }
+
+/* ─── Credits Footer ─── */
+.credits-footer {
+    margin-top: 36px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text-secondary);
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.credits-title {
+    margin: 0 0 6px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.credits-list {
+    margin: 0 0 10px;
+    padding-left: 20px;
+}
+
+.credits-teacher {
+    margin: 0;
+}
